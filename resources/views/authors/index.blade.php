@@ -4,7 +4,7 @@
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="mb-0">Authors List</h2>
-      <a href="{{ route('authors.create') }}" class="btn btn-primary mb-0"><i class="bi bi-person-plus"></i> + Add Author</a>
+      <a href="{{ route('authors.create') }}" class="btn btn-primary mb-0"><i class="bi bi-person-plus"></i> Add Author</a>
     </div>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -21,6 +21,7 @@
                     <th>Name</th>
                     <th>Books Count</th>
                     <th>Actions</th>
+                    <th>Created At</th>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +37,7 @@
                                 <button class="btn btn-danger btn-sm" title="Delete"><i class="bi bi-trash"></i></button>
                             </form>
                         </td>
+                        <td>{{ $author->created_at}}</td>
                     </tr>
                 @endforeach
             </tbody>
@@ -46,14 +48,18 @@
 
 @section('scripts')
 <script type="text/javascript">
-    $(document).ready(function () {
+      $(document).ready(function () {
         $('#authorsTable').DataTable({
             paging: true,
             searching: true,
             pageLength: 10,
             lengthMenu: [5, 10, 25, 50],
-            order: [[0, 'asc']],
+            order: [[3, 'desc']],
         });
+
+        setTimeout(function () {
+            $('.alert-success').fadeOut('slow');
+        }, 4000);
     });
 </script>
 @endsection

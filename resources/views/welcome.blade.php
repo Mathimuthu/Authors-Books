@@ -55,14 +55,6 @@
 </nav>
 
 <div class="container">
-    {{-- Flash Messages --}}
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-    @if(session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
-    @endif
-    
     <h1 class="heading mt-5">Welcome to the Books & Authors App</h1>
     <img src="{{ asset('images/authorbook.png') }}" class="centered-image mt-4" alt="Books App Image">
     

@@ -8,13 +8,12 @@
 
     <div class="mb-3">
         <label class="form-label">Title</label>
-        <input name="title" class="form-control" value="{{ old('title') }}" required>
-        @error('title') <small class="text-danger">{{ $message }}</small> @enderror
+        <input name="title" class="form-control" value="" required>
     </div>
 
     <div class="mb-3">
         <label class="form-label">Description</label>
-        <textarea name="description" class="form-control">{{ old('description') }}</textarea>
+        <textarea name="description" class="form-control" required></textarea>
     </div>
 
     <div class="mb-3">
@@ -22,12 +21,11 @@
         <select name="author_id" class="form-select" required>
             <option value="">Select Author</option>
             @foreach($authors as $author)
-                <option value="{{ $author->id }}" {{ old('author_id') == $author->id ? 'selected' : '' }}>
+                <option value="{{ $author->id }}">
                     {{ $author->name }}
                 </option>
             @endforeach
         </select>
-        @error('author_id') <small class="text-danger">{{ $message }}</small> @enderror
     </div>
 
     <button class="btn btn-success">Create</button>
