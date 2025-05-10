@@ -17,7 +17,7 @@ class AuthorController extends Controller
 
     public function store(Request $request) {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'bio' => 'nullable|string'
         ]);
 
